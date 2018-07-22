@@ -3,16 +3,20 @@ package com.java.design.patterns;
 import com.java.design.patterns.builder.GunMarket;
 import com.java.design.patterns.enemy.Enemy;
 import com.java.design.patterns.factory.EnemyFactory;
+import com.java.design.patterns.factory.EnemyType;
 import com.java.design.patterns.factory.SpidermanFactory;
 import com.java.design.patterns.factory.SupermanFactory;
 import com.java.design.patterns.builder.FrogLauncherBuilder;
 import com.java.design.patterns.gun.Gun;
 import com.java.design.patterns.builder.LaserBlasterBuilder;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
 
         testAbstractFactory();
+        testFactoryMethod();
         testBuilder();
     }
 
@@ -24,6 +28,16 @@ public class Main {
         Enemy spiderman = EnemyFactory.getEnemy(new SpidermanFactory());
         spiderman.move();
         spiderman.attack();
+        System.out.println("-----------------------------\n");
+    }
+
+    private static void testFactoryMethod(){
+        System.out.println("Factory method:");
+        for(EnemyType enemyType : EnemyType.values()){
+            Enemy e = EnemyFactory.getEnemy(enemyType);
+            e.attack();
+            e.move();
+        }
         System.out.println("-----------------------------\n");
     }
 
