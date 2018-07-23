@@ -11,6 +11,7 @@ import com.java.design.patterns.gun.Gun;
 import com.java.design.patterns.builder.LaserBlasterBuilder;
 import com.java.design.patterns.prototype.SheepCache;
 import com.java.design.patterns.sheep.Sheep;
+import com.java.design.patterns.singleton.IronMan;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,6 +20,7 @@ public class Main {
         testFactoryMethod();
         testBuilder();
         testPrototype();
+        testSingleton();
     }
 
     private static void testAbstractFactory(){
@@ -71,6 +73,17 @@ public class Main {
         System.out.println(superSheepClone.getClass().getName() + " clone:\n"
                 +  superSheepClone.getDescription() + " and it says: ");
         superSheepClone.bleat();
+        System.out.println("-----------------------------\n");
+    }
+
+    private static void testSingleton(){
+        System.out.println("Singleton:");
+        IronMan ironMan = IronMan.getInstance();
+        ironMan.SayName();
+        IronMan.getInstance().setName("Tony Stark");
+        ironMan.SayName();
+        ironMan.setName("Robert Downey Jr.");
+        IronMan.getInstance().SayName();
         System.out.println("-----------------------------\n");
     }
 }
