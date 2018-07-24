@@ -2,9 +2,11 @@ package com.java.design.patterns;
 
 import com.java.design.patterns.adapter.EnemyAdapter;
 import com.java.design.patterns.builder.GunMarket;
+import com.java.design.patterns.composite.EnemyGroup;
 import com.java.design.patterns.decorator.BlackSpiderman;
 import com.java.design.patterns.enemy.Enemy;
 import com.java.design.patterns.enemy.Spiderman;
+import com.java.design.patterns.enemy.Superman;
 import com.java.design.patterns.facade.BleatMaker;
 import com.java.design.patterns.factory.EnemyFactory;
 import com.java.design.patterns.factory.EnemyType;
@@ -30,6 +32,7 @@ public class Main {
         testAdapter();
         testDecorator();
         testFacade();
+        testComposite();
     }
 
     private static void testAbstractFactory(){
@@ -117,6 +120,23 @@ public class Main {
         BleatMaker bleatMaker = new BleatMaker();
         bleatMaker.MakeBlackSheepBleat();
         bleatMaker.MakeSuperSheepBleat();
+        System.out.println("-----------------------------\n");
+    }
+
+    private static void testComposite(){
+        System.out.println("Composite:");
+        EnemyGroup allEnemies = new EnemyGroup("All enemies");
+        EnemyGroup avengers = new EnemyGroup("Avengers");
+        EnemyGroup justiceLeague = new EnemyGroup("Justice league");
+        allEnemies.add(avengers);
+        allEnemies.add(justiceLeague);
+        allEnemies.add(new Spiderman());
+        avengers.add(IronMan.getInstance());
+        justiceLeague.add(new Superman());
+        EnemyGroup test = new EnemyGroup("test");
+        test.add(new Spiderman());
+        justiceLeague.add(test);
+        System.out.println(allEnemies.getInfo(0));
         System.out.println("-----------------------------\n");
     }
 }

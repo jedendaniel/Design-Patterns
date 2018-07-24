@@ -1,12 +1,20 @@
 package com.java.design.patterns.enemy;
 
-public abstract class Enemy {
+import com.java.design.patterns.composite.EnemyGroupComponent;
+
+public abstract class Enemy extends EnemyGroupComponent {
 
     protected String name;
     protected int damage;
 
+    @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String getInfo(int row) {
+        return getTab(row) + "> " + name + "\n";
     }
 
     public void setName(String name) {

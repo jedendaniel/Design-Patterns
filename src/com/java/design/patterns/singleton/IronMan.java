@@ -1,19 +1,16 @@
 package com.java.design.patterns.singleton;
 
-public class IronMan {
-    private static final IronMan instance = new IronMan();
+import com.java.design.patterns.enemy.Enemy;
 
-    private String name = "Iron Man";
+public class IronMan extends Enemy {
+    private static final IronMan instance = new IronMan();
 
     public static IronMan getInstance(){
         return instance;
     }
 
     private IronMan() {
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        name = "Iron Man";
     }
 
     public void SayName(){
