@@ -1,6 +1,7 @@
 package com.java.design.patterns;
 
 import com.java.design.patterns.adapter.EnemyAdapter;
+import com.java.design.patterns.bridge.GreenGoblin;
 import com.java.design.patterns.builder.GunMarket;
 import com.java.design.patterns.composite.EnemyGroup;
 import com.java.design.patterns.decorator.BlackSpiderman;
@@ -33,6 +34,8 @@ public class Main {
         testDecorator();
         testFacade();
         testComposite();
+        testBridge();
+
     }
 
     private static void testAbstractFactory(){
@@ -133,10 +136,15 @@ public class Main {
         allEnemies.add(new Spiderman());
         avengers.add(IronMan.getInstance());
         justiceLeague.add(new Superman());
-        EnemyGroup test = new EnemyGroup("test");
-        test.add(new Spiderman());
-        justiceLeague.add(test);
         System.out.println(allEnemies.getInfo(0));
+        System.out.println("-----------------------------\n");
+    }
+
+    private static void testBridge(){
+        System.out.println("Bridge:");
+        Spiderman spiderman = new Spiderman();
+        spiderman.setNemesis(new GreenGoblin());
+        spiderman.defeatNemesis();
         System.out.println("-----------------------------\n");
     }
 }

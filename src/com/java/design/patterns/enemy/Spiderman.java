@@ -16,4 +16,10 @@ public class Spiderman extends Enemy {
     public void attack() {
         System.out.println("Spiderman attacks shooting spiders things.");
     }
+
+    @Override
+    public void defeatNemesis() {
+        System.out.println("Spiderman is fighting his nemesis.");
+        nemesis.getDefeated();
+    }
 }

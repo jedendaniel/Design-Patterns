@@ -18,7 +18,7 @@ public class BleatMaker {
     }
 
     public void MakeSuperSheepBleat(){
-        System.out.println("This is how black super bleat:");
+        System.out.println("This is how super sheep bleat:");
         superSheep.bleat();
     }
 }

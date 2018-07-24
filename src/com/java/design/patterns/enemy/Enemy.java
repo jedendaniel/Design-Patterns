@@ -1,11 +1,13 @@
 package com.java.design.patterns.enemy;
 
+import com.java.design.patterns.bridge.Nemesis;
 import com.java.design.patterns.composite.EnemyGroupComponent;
 
 public abstract class Enemy extends EnemyGroupComponent {
 
     protected String name;
     protected int damage;
+    protected Nemesis nemesis;
 
     @Override
     public String getName() {
@@ -29,6 +31,15 @@ public abstract class Enemy extends EnemyGroupComponent {
         this.damage = damage;
     }
 
+    public Nemesis getNemesis() {
+        return nemesis;
+    }
+
+    public void setNemesis(Nemesis nemesis) {
+        this.nemesis = nemesis;
+    }
+
     public void move(){}
     public void attack(){}
+    public void defeatNemesis(){}
 }
