@@ -10,4 +10,9 @@ public class BlackSheep extends Sheep {
     public void bleat() {
         System.out.println("Beee :( Beee :(");
     }
+
+    @Override
+    public void move() {
+        System.out.println("Black sheep is jumping");
+    }
 }

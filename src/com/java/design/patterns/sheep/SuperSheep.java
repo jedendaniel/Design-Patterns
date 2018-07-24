@@ -10,4 +10,9 @@ public class SuperSheep extends Sheep{
     public void bleat() {
         System.out.println("Bee! :) Bee! ++");
     }
+
+    @Override
+    public void move() {
+        System.out.println("Super sheep is flying");
+    }
 }

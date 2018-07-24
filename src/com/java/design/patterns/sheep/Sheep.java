@@ -6,6 +6,7 @@ public abstract class Sheep implements Cloneable {
     protected String description;
 
     abstract public void bleat();
+    abstract public void move();
 
     public Object clone(){
         Object clone = null;

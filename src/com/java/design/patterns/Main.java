@@ -1,7 +1,11 @@
 package com.java.design.patterns;
 
+import com.java.design.patterns.adapter.EnemyAdapter;
 import com.java.design.patterns.builder.GunMarket;
+import com.java.design.patterns.decorator.BlackSpiderman;
 import com.java.design.patterns.enemy.Enemy;
+import com.java.design.patterns.enemy.Spiderman;
+import com.java.design.patterns.facade.BleatMaker;
 import com.java.design.patterns.factory.EnemyFactory;
 import com.java.design.patterns.factory.EnemyType;
 import com.java.design.patterns.factory.SpidermanFactory;
@@ -10,6 +14,7 @@ import com.java.design.patterns.builder.FrogLauncherBuilder;
 import com.java.design.patterns.gun.Gun;
 import com.java.design.patterns.builder.LaserBlasterBuilder;
 import com.java.design.patterns.prototype.SheepCache;
+import com.java.design.patterns.sheep.BlackSheep;
 import com.java.design.patterns.sheep.Sheep;
 import com.java.design.patterns.singleton.IronMan;
 
@@ -21,6 +26,10 @@ public class Main {
         testBuilder();
         testPrototype();
         testSingleton();
+
+        testAdapter();
+        testDecorator();
+        testFacade();
     }
 
     private static void testAbstractFactory(){
@@ -84,6 +93,30 @@ public class Main {
         ironMan.SayName();
         ironMan.setName("Robert Downey Jr.");
         IronMan.getInstance().SayName();
+        System.out.println("-----------------------------\n");
+    }
+
+    private static void testAdapter(){
+        System.out.println("Adapter:");
+        EnemyAdapter enemyAdapter = new EnemyAdapter(new BlackSheep());
+        enemyAdapter.move();
+        enemyAdapter.attack();
+        System.out.println("-----------------------------\n");
+    }
+
+    private static void testDecorator(){
+        System.out.println("Decorator:");
+        BlackSpiderman blackSpiderman = new BlackSpiderman(new Spiderman());
+        blackSpiderman.move();
+        blackSpiderman.attack();
+        System.out.println("-----------------------------\n");
+    }
+
+    private static void testFacade(){
+        System.out.println("Facade:");
+        BleatMaker bleatMaker = new BleatMaker();
+        bleatMaker.MakeBlackSheepBleat();
+        bleatMaker.MakeSuperSheepBleat();
         System.out.println("-----------------------------\n");
     }
 }
