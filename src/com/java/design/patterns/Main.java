@@ -3,6 +3,8 @@ package com.java.design.patterns;
 import com.java.design.patterns.adapter.EnemyAdapter;
 import com.java.design.patterns.bridge.GreenGoblin;
 import com.java.design.patterns.builder.GunMarket;
+import com.java.design.patterns.chainofresponsibility.AbstractLogger;
+import com.java.design.patterns.chainofresponsibility.ConsoleLogger;
 import com.java.design.patterns.composite.EnemyGroup;
 import com.java.design.patterns.decorator.BlackSpiderman;
 import com.java.design.patterns.enemy.Enemy;
@@ -39,6 +41,8 @@ public class Main {
         testBridge();
         testProxy();
         testFlyweight();
+
+        testChainOfResponsibility();
 
     }
 
@@ -163,6 +167,23 @@ public class Main {
         System.out.println("Flyweight:");
         ColorsSuperSheepFactory.getSuperSheep("Red").draw();
         ColorsSuperSheepFactory.getSuperSheep("Red").draw();
+        System.out.println("-----------------------------\n");
+    }
+
+    private static AbstractLogger getChainOfLoggers(){
+
+        AbstractLogger errorLogger = new ConsoleLogger(AbstractLogger.ERROR);
+        AbstractLogger consoleLogger = new ConsoleLogger(AbstractLogger.INFO);
+        errorLogger.setNextLogger(consoleLogger);
+
+        return consoleLogger;
+    }
+
+    private static void testChainOfResponsibility(){
+        System.out.println("Chain of responsibility:");
+        AbstractLogger loggerChain = getChainOfLoggers();
+        loggerChain.logMessage(AbstractLogger.ERROR,"Error message");
+        loggerChain.logMessage(AbstractLogger.INFO, "Info message");
         System.out.println("-----------------------------\n");
     }
 }
