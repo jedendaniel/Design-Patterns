@@ -25,6 +25,7 @@ import com.java.design.patterns.gun.Gun;
 import com.java.design.patterns.builder.LaserBlasterBuilder;
 import com.java.design.patterns.mediator.ChatImpl;
 import com.java.design.patterns.mediator.User;
+import com.java.design.patterns.memento.CharacterSavesManager;
 import com.java.design.patterns.prototype.SheepCache;
 import com.java.design.patterns.proxy.ProxySuperman;
 import com.java.design.patterns.sheep.BlackSheep;
@@ -52,6 +53,7 @@ public class Main {
         testChainOfResponsibility();
         testCommand();
         testMediator();
+        testMemento();
     }
 
     private static void testAbstractFactory(){
@@ -216,6 +218,28 @@ public class Main {
         Ddd123.sendMessage("Hello chat!");
         System.out.println();
         Rrrricky.sendMessage("Hi Ddd123 :)");
+        System.out.println("-----------------------------\n");
+    }
+
+    private static void testMemento(){
+        System.out.println("Memento:");
+        Character myCharacter = new Character("Daniel");
+        CharacterSavesManager characterSavesManager = new CharacterSavesManager();
+        characterSavesManager.save("start", myCharacter);
+        Command moveCharacter = new MoveCharacter(myCharacter, new Vec2f(1f,2f));
+        moveCharacter.execute();
+        Command upgradeCharacter = new UpgradeCharacter(myCharacter);
+        upgradeCharacter.execute();
+        characterSavesManager.save("Chapter2", myCharacter);
+        moveCharacter = new MoveCharacter(myCharacter, new Vec2f(2f,4f));
+        moveCharacter.execute();
+        upgradeCharacter.execute();
+        characterSavesManager.save("Chapter3", myCharacter);
+        System.out.println(myCharacter.getName() + " lvl: " + myCharacter.getLevel());
+        myCharacter = characterSavesManager.restore("Chapter2").getCharacterState();
+        System.out.println(myCharacter.getName() + " lvl: " + myCharacter.getLevel());
+        myCharacter = characterSavesManager.restore("start").getCharacterState();
+        System.out.println(myCharacter.getName() + " lvl: " + myCharacter.getLevel());
         System.out.println("-----------------------------\n");
     }
 }
