@@ -5,6 +5,10 @@ import com.java.design.patterns.bridge.GreenGoblin;
 import com.java.design.patterns.builder.GunMarket;
 import com.java.design.patterns.chainofresponsibility.AbstractLogger;
 import com.java.design.patterns.chainofresponsibility.ConsoleLogger;
+import com.java.design.patterns.character.Character;
+import com.java.design.patterns.command.Command;
+import com.java.design.patterns.command.MoveCharacter;
+import com.java.design.patterns.command.UpgradeCharacter;
 import com.java.design.patterns.composite.EnemyGroup;
 import com.java.design.patterns.decorator.BlackSpiderman;
 import com.java.design.patterns.enemy.Enemy;
@@ -24,6 +28,7 @@ import com.java.design.patterns.proxy.ProxySuperman;
 import com.java.design.patterns.sheep.BlackSheep;
 import com.java.design.patterns.sheep.Sheep;
 import com.java.design.patterns.singleton.IronMan;
+import com.sun.javafx.geom.Vec2f;
 
 public class Main {
     public static void main(String[] args) {
@@ -43,6 +48,7 @@ public class Main {
         testFlyweight();
 
         testChainOfResponsibility();
+        testCommand();
 
     }
 
@@ -184,6 +190,16 @@ public class Main {
         AbstractLogger loggerChain = getChainOfLoggers();
         loggerChain.logMessage(AbstractLogger.ERROR,"Error message");
         loggerChain.logMessage(AbstractLogger.INFO, "Info message");
+        System.out.println("-----------------------------\n");
+    }
+
+    private static void testCommand(){
+        System.out.println("Command:");
+        Character myCharacter = new Character("Daniel");
+        Command moveCharacter = new MoveCharacter(myCharacter, new Vec2f(1f,2f));
+        moveCharacter.execute();
+        Command upgradeCharacter = new UpgradeCharacter(myCharacter);
+        upgradeCharacter.execute();
         System.out.println("-----------------------------\n");
     }
 }
