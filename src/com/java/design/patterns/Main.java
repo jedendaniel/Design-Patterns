@@ -14,6 +14,7 @@ import com.java.design.patterns.factory.EnemyType;
 import com.java.design.patterns.factory.SpidermanFactory;
 import com.java.design.patterns.factory.SupermanFactory;
 import com.java.design.patterns.builder.FrogLauncherBuilder;
+import com.java.design.patterns.flyweight.ColorsSuperSheepFactory;
 import com.java.design.patterns.gun.Gun;
 import com.java.design.patterns.builder.LaserBlasterBuilder;
 import com.java.design.patterns.prototype.SheepCache;
@@ -36,6 +37,8 @@ public class Main {
         testFacade();
         testComposite();
         testBridge();
+        testProxy();
+        testFlyweight();
 
     }
 
@@ -153,6 +156,13 @@ public class Main {
         System.out.println("Proxy:");
         ProxySuperman proxySuperman = new ProxySuperman("Christopher Reeve");
         proxySuperman.move();
+        System.out.println("-----------------------------\n");
+    }
+
+    private static void testFlyweight(){
+        System.out.println("Flyweight:");
+        ColorsSuperSheepFactory.getSuperSheep("Red").draw();
+        ColorsSuperSheepFactory.getSuperSheep("Red").draw();
         System.out.println("-----------------------------\n");
     }
 }
