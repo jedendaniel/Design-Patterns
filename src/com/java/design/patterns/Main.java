@@ -23,6 +23,8 @@ import com.java.design.patterns.builder.FrogLauncherBuilder;
 import com.java.design.patterns.flyweight.ColorsSuperSheepFactory;
 import com.java.design.patterns.gun.Gun;
 import com.java.design.patterns.builder.LaserBlasterBuilder;
+import com.java.design.patterns.mediator.ChatImpl;
+import com.java.design.patterns.mediator.User;
 import com.java.design.patterns.prototype.SheepCache;
 import com.java.design.patterns.proxy.ProxySuperman;
 import com.java.design.patterns.sheep.BlackSheep;
@@ -49,7 +51,7 @@ public class Main {
 
         testChainOfResponsibility();
         testCommand();
-
+        testMediator();
     }
 
     private static void testAbstractFactory(){
@@ -200,6 +202,20 @@ public class Main {
         moveCharacter.execute();
         Command upgradeCharacter = new UpgradeCharacter(myCharacter);
         upgradeCharacter.execute();
+        System.out.println("-----------------------------\n");
+    }
+
+    private static void testMediator(){
+        System.out.println("Mediator:");
+        ChatImpl inGameChat = new ChatImpl();
+        User Ddd123 = new User("Ddd123");
+        inGameChat.register(Ddd123);
+        User Rrrricky = new User("Rrrricky");
+        inGameChat.register(Rrrricky);
+        inGameChat.register(new User("NOKEYBOARD11"));
+        Ddd123.sendMessage("Hello chat!");
+        System.out.println();
+        Rrrricky.sendMessage("Hi Ddd123 :)");
         System.out.println("-----------------------------\n");
     }
 }
