@@ -31,6 +31,8 @@ import com.java.design.patterns.proxy.ProxySuperman;
 import com.java.design.patterns.sheep.BlackSheep;
 import com.java.design.patterns.sheep.Sheep;
 import com.java.design.patterns.singleton.IronMan;
+import com.java.design.patterns.templatemethod.FighterGame;
+import com.java.design.patterns.templatemethod.RacingGame;
 import com.sun.javafx.geom.Vec2f;
 
 public class Main {
@@ -54,6 +56,7 @@ public class Main {
         testCommand();
         testMediator();
         testMemento();
+        testTemplateMethod();
     }
 
     private static void testAbstractFactory(){
@@ -240,6 +243,15 @@ public class Main {
         System.out.println(myCharacter.getName() + " lvl: " + myCharacter.getLevel());
         myCharacter = characterSavesManager.restore("start").getCharacterState();
         System.out.println(myCharacter.getName() + " lvl: " + myCharacter.getLevel());
+        System.out.println("-----------------------------\n");
+    }
+
+    private static void testTemplateMethod(){
+        System.out.println("Template method:");
+        FighterGame fighterGame = new FighterGame();
+        fighterGame.play();
+        RacingGame racingGame = new RacingGame();
+        racingGame.play();
         System.out.println("-----------------------------\n");
     }
 }
