@@ -26,6 +26,7 @@ import com.java.design.patterns.builder.LaserBlasterBuilder;
 import com.java.design.patterns.mediator.ChatImpl;
 import com.java.design.patterns.mediator.User;
 import com.java.design.patterns.memento.CharacterSavesManager;
+import com.java.design.patterns.observer.Server;
 import com.java.design.patterns.prototype.SheepCache;
 import com.java.design.patterns.proxy.ProxySuperman;
 import com.java.design.patterns.sheep.BlackSheep;
@@ -57,6 +58,7 @@ public class Main {
         testMediator();
         testMemento();
         testTemplateMethod();
+        testObserver();
     }
 
     private static void testAbstractFactory(){
@@ -252,6 +254,23 @@ public class Main {
         fighterGame.play();
         RacingGame racingGame = new RacingGame();
         racingGame.play();
+        System.out.println("-----------------------------\n");
+    }
+
+    private static void testObserver(){
+        System.out.println("Observer:");
+        Server server = new Server("BambinoEU");
+        User user1 = new User("User1");
+        User user2 = new User("User2");
+        System.out.println("Register user1 and user2..");
+        server.register(user1);
+        server.register(user2);
+        System.out.println("Set server to online..");
+        server.setOnline(true);
+        System.out.println("Unregister user1..");
+        server.unregister(user1);
+        System.out.println("Set server to offline..");
+        server.setOnline(false);
         System.out.println("-----------------------------\n");
     }
 }

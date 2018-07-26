@@ -1,6 +1,9 @@
 package com.java.design.patterns.mediator;
 
-public class User {
+import com.java.design.patterns.observer.Observer;
+import com.java.design.patterns.observer.Server;
+
+public class User extends Observer {
     private String name;
     private Chat chat;
 
@@ -28,5 +31,12 @@ public class User {
     public void receiveMessage(Message message){
         System.out.println("What " + name + " see:");
         System.out.println(message.getRecipient() + ": " + message.getContent());
+    }
+
+    @Override
+    public void update() {
+        String state = ((Server)subject).isOnline()?"online":"offline";
+        System.out.println("Update for " + name +
+                " -> Server: " + ((Server)subject).getName() + " is " + state + " now.");
     }
 }
