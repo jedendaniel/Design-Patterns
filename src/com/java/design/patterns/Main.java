@@ -32,6 +32,7 @@ import com.java.design.patterns.proxy.ProxySuperman;
 import com.java.design.patterns.sheep.BlackSheep;
 import com.java.design.patterns.sheep.Sheep;
 import com.java.design.patterns.singleton.IronMan;
+import com.java.design.patterns.state.ServerState;
 import com.java.design.patterns.templatemethod.FighterGame;
 import com.java.design.patterns.templatemethod.RacingGame;
 import com.sun.javafx.geom.Vec2f;
@@ -59,6 +60,7 @@ public class Main {
         testMemento();
         testTemplateMethod();
         testObserver();
+        testState();
     }
 
     private static void testAbstractFactory(){
@@ -266,11 +268,23 @@ public class Main {
         server.register(user1);
         server.register(user2);
         System.out.println("Set server to online..");
-        server.setOnline(true);
+        server.setState(ServerState.ONLINE);
         System.out.println("Unregister user1..");
         server.unregister(user1);
         System.out.println("Set server to offline..");
-        server.setOnline(false);
+        server.setState(ServerState.OFFLINE);
+        System.out.println("-----------------------------\n");
+    }
+
+    private static void testState(){
+        System.out.println("State:");
+        Server server = new Server("BambinoEU");
+        User user1 = new User("User1");
+        server.register(user1);
+        server.setState(ServerState.ONLINE);
+        user1.joinServer();
+        server.setState(ServerState.OFFLINE);
+        user1.joinServer();
         System.out.println("-----------------------------\n");
     }
 }

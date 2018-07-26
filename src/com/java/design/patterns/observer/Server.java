@@ -1,19 +1,22 @@
 package com.java.design.patterns.observer;
 
+import com.java.design.patterns.state.ServerState;
+
 public class Server extends Subject {
-    boolean online = false;
+    ServerState state;
     String name;
 
     public Server(String name) {
         this.name = name;
+        state = ServerState.OFFLINE;
     }
 
-    public boolean isOnline() {
-        return online;
+    public ServerState getState() {
+        return state;
     }
 
-    public void setOnline(boolean online) {
-        this.online = online;
+    public void setState(ServerState state) {
+        this.state = state;
         notifyObservers();
     }
 
