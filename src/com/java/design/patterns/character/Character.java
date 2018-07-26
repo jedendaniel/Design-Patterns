@@ -1,6 +1,5 @@
 package com.java.design.patterns.character;
 
-import com.java.design.patterns.gun.Gun;
 import com.sun.javafx.geom.Vec2f;
 
 public class Character {

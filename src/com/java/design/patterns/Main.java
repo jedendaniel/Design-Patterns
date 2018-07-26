@@ -31,6 +31,7 @@ import com.java.design.patterns.prototype.SheepCache;
 import com.java.design.patterns.proxy.ProxySuperman;
 import com.java.design.patterns.sheep.BlackSheep;
 import com.java.design.patterns.sheep.Sheep;
+import com.java.design.patterns.sheep.SuperSheep;
 import com.java.design.patterns.singleton.IronMan;
 import com.java.design.patterns.state.ServerState;
 import com.java.design.patterns.strategy.DefeaterContext;
@@ -38,6 +39,7 @@ import com.java.design.patterns.strategy.SpidermanDefeater;
 import com.java.design.patterns.strategy.SupermanDefeater;
 import com.java.design.patterns.templatemethod.FighterGame;
 import com.java.design.patterns.templatemethod.RacingGame;
+import com.java.design.patterns.visitor.Inspiration;
 import com.sun.javafx.geom.Vec2f;
 
 public class Main {
@@ -65,6 +67,7 @@ public class Main {
         testObserver();
         testState();
         testStrategy();
+        testVisitor();
     }
 
     private static void testAbstractFactory(){
@@ -299,6 +302,16 @@ public class Main {
         defeaterContext.defeatEnemy();
         defeaterContext.setStrategy(new SupermanDefeater());
         defeaterContext.defeatEnemy();
+        System.out.println("-----------------------------\n");
+    }
+
+    private static void testVisitor(){
+        System.out.println("Visitor:");
+        Inspiration inspiration = new Inspiration();
+        BlackSheep blackSheep = new BlackSheep();
+        SuperSheep superSheep = new SuperSheep();
+        blackSheep.accept(inspiration);
+        superSheep.accept(inspiration);
         System.out.println("-----------------------------\n");
     }
 }

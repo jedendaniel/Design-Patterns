@@ -1,5 +1,7 @@
 package com.java.design.patterns.sheep;
 
+import com.java.design.patterns.visitor.Visitor;
+
 public class SuperSheep extends Sheep{
 
     String color;
@@ -24,5 +26,10 @@ public class SuperSheep extends Sheep{
 
     public void draw(){
         System.out.println("Drawing super sheep of color " + color);
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitSuperSheep(this);
     }
 }

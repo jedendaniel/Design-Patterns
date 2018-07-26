@@ -1,5 +1,7 @@
 package com.java.design.patterns.sheep;
 
+import com.java.design.patterns.visitor.Visitor;
+
 public class BlackSheep extends Sheep {
 
     public BlackSheep() {
@@ -14,5 +16,10 @@ public class BlackSheep extends Sheep {
     @Override
     public void move() {
         System.out.println("Black sheep is jumping");
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitBlackSheep(this);
     }
 }

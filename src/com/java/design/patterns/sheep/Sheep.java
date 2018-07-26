@@ -1,5 +1,7 @@
 package com.java.design.patterns.sheep;
 
+import com.java.design.patterns.visitor.Visitor;
+
 public abstract class Sheep implements Cloneable {
 
     private String id;
@@ -7,6 +9,7 @@ public abstract class Sheep implements Cloneable {
 
     abstract public void bleat();
     abstract public void move();
+    public void accept(Visitor visitor){}
 
     public Object clone(){
         Object clone = null;
