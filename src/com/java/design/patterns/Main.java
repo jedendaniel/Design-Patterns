@@ -33,6 +33,9 @@ import com.java.design.patterns.sheep.BlackSheep;
 import com.java.design.patterns.sheep.Sheep;
 import com.java.design.patterns.singleton.IronMan;
 import com.java.design.patterns.state.ServerState;
+import com.java.design.patterns.strategy.DefeaterContext;
+import com.java.design.patterns.strategy.SpidermanDefeater;
+import com.java.design.patterns.strategy.SupermanDefeater;
 import com.java.design.patterns.templatemethod.FighterGame;
 import com.java.design.patterns.templatemethod.RacingGame;
 import com.sun.javafx.geom.Vec2f;
@@ -61,6 +64,7 @@ public class Main {
         testTemplateMethod();
         testObserver();
         testState();
+        testStrategy();
     }
 
     private static void testAbstractFactory(){
@@ -285,6 +289,16 @@ public class Main {
         user1.joinServer();
         server.setState(ServerState.OFFLINE);
         user1.joinServer();
+        System.out.println("-----------------------------\n");
+    }
+
+    private static void testStrategy(){
+        System.out.println("Strategy:");
+        DefeaterContext defeaterContext = new DefeaterContext();
+        defeaterContext.setStrategy(new SpidermanDefeater());
+        defeaterContext.defeatEnemy();
+        defeaterContext.setStrategy(new SupermanDefeater());
+        defeaterContext.defeatEnemy();
         System.out.println("-----------------------------\n");
     }
 }
